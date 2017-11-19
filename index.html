@@ -88,7 +88,7 @@
 			</section>
 			<section>
 				<section>
-					<p>Funcion</p>
+					<p>Función</p>
 					<pre><code class="javascript" data-trim data-noescape>						
 						Function.prototype.map = function map(fn) {
 							return (...args) => fn(this.apply(this, args))
@@ -131,12 +131,15 @@
 		// More info about config & dependencies:
 		// - https://github.com/hakimel/reveal.js#configuration
 		// - https://github.com/hakimel/reveal.js#dependencies
+		const minutes = x => x * 60 * 1000;
 		Reveal.initialize({
+			allottedTime: minutes(30),
 			dependencies: [
 				{ src: 'plugin/markdown/marked.js' },
 				{ src: 'plugin/markdown/markdown.js' },
 				{ src: 'plugin/notes/notes.js', async: true },
-				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/elapsed-time-bar/elapsed-time-bar.js' }
 			]
 		});
 	</script>

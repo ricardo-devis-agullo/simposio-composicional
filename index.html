@@ -131,7 +131,18 @@
 				</section>
 			</section>
 			<section>
-				Aplicando
+				<section>
+					<p>IO</p>
+					<pre><code class="javascript" data-trim data-noescape>
+						const IO = f => ({
+							map: g => IO(compose(g, f)),
+							unsafePerformIO: f
+						});
+					</code></pre>
+				</section>
+				<section data-background-iframe="http://ramdajs.com/repl/#?const%20IO%20%3D%20f%20%3D%3E%20%28%7B%0A%20%20map%3A%20g%20%3D%3E%20IO%28compose%28g%2C%20f%29%29%2C%0A%20%20unsafePerformIO%3A%20f%0A%7D%29%3B%0A%0Aconst%20getSelector%20%3D%20selector%20%3D%3E%20%0A%20%20IO%28%28%29%20%3D%3E%20document.querySelectorAll%28selector%29%29%0A%0Aconst%20cleanInnerText%20%3D%20compose%28toUpper%2C%20trim%2C%20prop%28%27innerHTML%27%29%29%0Aconst%20addText%20%3D%20text%20%3D%3E%20compose%28join%28%27%27%29%2C%20append%28text%29%29%0A%0AgetSelector%28%27.navbar-brand%20strong%27%29%0A%20%20.map%28head%29%0A%20%20.map%28cleanInnerText%29%0A%20%20.map%28addText%28%27%20ROCKS%21%27%29%29%0A%20%20.unsafePerformIO%28%29%0A%20%20"
+				 data-background-interactive>
+				</section>
 			</section>
 		</div>
 	</div>

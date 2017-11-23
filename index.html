@@ -144,6 +144,30 @@
 				 data-background-interactive>
 				</section>
 			</section>
+			<section>
+				<section class="stretch" data-background-image="monad.png">
+					<div style="background-color: #000000b8">
+						<h2>MONADS!</h2>
+					</div>
+				</section>
+				<section data-background-iframe="http://ramdajs.com/repl/#?const%20Box%20%3D%20x%20%3D%3E%20%28%7B%0A%20%20map%3A%20f%20%3D%3E%20Box%28f%28x%29%29%2C%0A%20%20toString%3A%20%28%29%20%3D%3E%20%60Box%28%24%7Bx%7D%29%60%0A%7D%29%0A%0Aconst%20getOrganization%20%3D%20id%20%3D%3E%20Box%28%27organization%27%29%0Aconst%20getGroup%20%3D%20organization%20%3D%3E%20Box%28%27group%27%29%0Aconst%20getUser%20%3D%20group%20%3D%3E%20Box%28%27user%27%29"
+				 data-background-interactive>
+				</section>
+			</section>
+			<section>
+				<section>
+					<p>Functores Aplicativos</p>
+					<pre><code class="javascript" data-trim data-noescape>
+						Box(x => x + 1).ap(Box(5)) // Box(6)
+					</code></pre>
+				</section>
+				<section data-background-iframe="http://ramdajs.com/repl/#?const%20Box%20%3D%20x%20%3D%3E%20%28%7B%0A%20%20ap%3A%20b2%20%3D%3E%20b2.map%28x%29%2C%0A%20%20chain%3A%20f%20%3D%3E%20f%28x%29%2C%0A%20%20map%3A%20f%20%3D%3E%20Box%28f%28x%29%29%2C%0A%20%20toString%3A%20%28%29%20%3D%3E%20%60Box%28%24%7Bx%7D%29%60%0A%7D%29%0A%0Aconst%20res%20%3D%20Box%28x%20%3D%3E%20x%20%2B%201%29.ap%28Box%283%29%29%0A%0Ares"
+				 data-background-interactive>
+				</section>
+			</section>
+			<section>
+				<h1 style="text-transform:lowercase">return;</h1>
+			</section>
 		</div>
 	</div>
 

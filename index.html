@@ -164,6 +164,23 @@
 				<section data-background-iframe="http://ramdajs.com/repl/#?const%20Box%20%3D%20x%20%3D%3E%20%28%7B%0A%20%20ap%3A%20b2%20%3D%3E%20b2.map%28x%29%2C%0A%20%20chain%3A%20f%20%3D%3E%20f%28x%29%2C%0A%20%20map%3A%20f%20%3D%3E%20Box%28f%28x%29%29%2C%0A%20%20toString%3A%20%28%29%20%3D%3E%20%60Box%28%24%7Bx%7D%29%60%0A%7D%29%0A%0Aconst%20res%20%3D%20Box%28x%20%3D%3E%20x%20%2B%201%29.ap%28Box%283%29%29%0A%0Ares"
 				 data-background-interactive>
 				</section>
+				<section>
+					<p>Traversables... but wait!</p>
+					<p>Semigrupo</p>
+					<pre><code class="javascript" data-trim data-noescape>
+						'a'.concat('b'.concat('c')) // 'abc'
+						('a'.concat('b')).concat('c') // 'abc'
+					</code></pre>
+					<p>Monoide</p>
+					<pre><code class="javascript" data-trim data-noescape>
+						String.empty = _ => ''
+						String.empty().concat('a') // 'a'
+						'a'.concat(String.empty()) // 'a'
+					</code></pre>
+				</section>
+				<section data-background-iframe="http://ramdajs.com/repl/#?const%20Box%20%3D%20x%20%3D%3E%20%28%7B%0A%20%20ap%3A%20b2%20%3D%3E%20b2.map%28x%29%2C%0A%20%20map%3A%20f%20%3D%3E%20Box%28f%28x%29%29%2C%0A%20%20toString%3A%20%28%29%20%3D%3E%20%60Box%28%24%7Bx%7D%29%60%0A%7D%29%0A%0ABox.of%20%3D%20Box%0A%0AArray.prototype.empty%20%3D%20%5B%5D%0A%0AArray.prototype.toString%20%3D%20function%28%29%20%7B%0A%20%20return%20%60%5B%24%7Bthis.reduce%28%28acc%2C%20v%29%20%3D%3E%20%60%24%7Bacc%7D%2C%24%7Bv%7D%60%29%7D%5D%60%3B%0A%7D%0A%0AArray.prototype.traverse%20%3D%20function%28point%2C%20f%29%20%7B%0A%20%20return%20this.reduce%28%28ys%2C%20x%29%20%3D%3E%0A%20%20%20%20f%28x%29.map%28x%20%3D%3E%20y%20%3D%3E%20y.concat%28%5Bx%5D%29%29.ap%28ys%29%2C%20point%28this.empty%29%29%0A%7D%0A%0Aconst%20getUser%20%3D%20id%20%3D%3E%20Box%28%60user%24%7Bid%7D%60%29%0A%0Aconst%20users%20%3D%20%5B2%2C%203%5D.map%28getUser%29%0Ausers%0A"
+				 data-background-interactive>
+				</section>
 			</section>
 			<section>
 				<h1 style="text-transform:lowercase">return;</h1>
